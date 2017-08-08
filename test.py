@@ -1,10 +1,10 @@
 #coding:utf-8
 import sys
 
-from multiwget import FileMwget
+from mwget.multiwget import FileMwget
 
 #163镜像的速度比较给力
-fileurl = 'http://mirrors.163.com/centos/7/isos/x86_64/CentOS-7-x86_64-NetInstall-1503.iso'
+file_url = "http://mirrors.163.com/centos/7/isos/x86_64/CentOS-7-x86_64-NetInstall-1611.iso"
 
 
 def test():
@@ -14,7 +14,7 @@ def test():
         print 'give me url'
         sys.exit()
 
-    down = FileMwget(mfile, debug=True)
+    down = FileMwget(mfile, process_num=10, debug=True)
     down.run()
     print down.get_report()
 
