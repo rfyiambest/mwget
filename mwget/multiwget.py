@@ -1,18 +1,19 @@
 # -*- coding: utf-8 -*-
 
-import util
 import os
 import sys
+import time
 from os import path
 import multiprocessing
 import Queue
-import time
 import shutil
+
+import util
 
 
 class FileMwget():
-    def __init__(self, url, save_path=None, status_func=None, done_func=None,
-                 debug=False):
+    def __init__(self, url, save_path=None, status_func=None, done_func=None, process_num=10,
+                debug=False):
         self.url = url
         self.debug = debug
 
@@ -166,6 +167,7 @@ if __name__ == "__main__":
     else:
         print 'give me url'
         sys.exit()
-    down = FileMwget(mfile, debug=True)
+
+    down = FileMwget(mfile, process_num=10, debug=True)
     down.run()
     print down.get_report()
